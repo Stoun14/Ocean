@@ -1,37 +1,33 @@
-<footer>
-    <div id="supFooter">
-        <ul>
-            <li>
-                <img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo ocean">
-            </li>            
-        </ul>
-        <ul>
-            <li>
-                <a href="{{path('home')}}">Accueil</a>
+<nav id="Footer" class="navbar navbar-expand-lg navbar-dark">
+    <div id="supFooter" class="flex-column">
+        <a class="navbar-brand" href="{{path('home')}}"><img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo ocean"></a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('home')}}">Accueil</a>
             </li>
-            <li>
-                <a href="{{path('home')}}">Contact</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('home')}}">Contact</a>
             </li>
-            <li>
-                <a href="{{path('home')}}">Mentions légales</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('home')}}">Mentions légales</a>
             </li>
         </ul>
-        <ul>
-            <li>
+        <ul class="nav flex-column">
+            <li class="nav-item">
                 <a href="{{path('home')}}">RGPD</a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a href="{{path('home')}}">CGU</a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a href="{{path('home')}}">Plan du site</a>
             </li>
         </ul>
     </div>
-    <div id="subFooter">
+    <div id="subFooter" class="flex-column">
         <p>
             &copy; CSilene 
             {{ ("now"|date("Y")) is same as("2022") ? 2022 : ("2022 - " ~ "now"|date("Y")) }}          
         </p>
     </div>
-</footer>
+</nav>
