@@ -1,31 +1,77 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{path('home')}}"><img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo de l'association" width="50" height="50"></a>
-    {# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> #}
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="{{path('home')}}">Accueil
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('register')}}">S'enregistrer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('admin')}}">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('login')}}">Connexion</a>
-        </li>        
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Recherche">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<div class="container-fluid bg-light">
+	<div
+		class="d-flex flex-row justify-content-end">
+		<!-- Top Navbar -->
+		<div class="me-2">
+			<i class="fa-solid fa-user"></i>
+		</div>
+		<div class="me-4">
+			<a href="{{path('register')}}">
+				S'enregistrer
+			</a>
+		</div>
+		<div class="me-4" style="border-left: 1px;">
+			<a href="{{path('login')}}">Connexion</a>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<a class="navbar-brand" href="{{path('home')}}"><img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo de l'association" width="50" height="50"></a>
+</div>
+<header>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+		<div class="container">
+			<a class="navbar-brand" href="#!">
+				<span style="color: #5e9693;">Psycho</span>
+				<span style="color: #fff;">logist</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Offer</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Reference</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Team</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#!">Contact</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav d-flex flex-row">
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#!">
+							<i class="fas fa-shopping-cart"></i>
+						</a>
+					</li>
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#!">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#!">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Navbar -->
+</header>

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrdersRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Orders
 {
     #[ORM\Id]
@@ -40,9 +41,17 @@ class Orders
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTimeImmutable();
+    }
+
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = null;
+        $this->products = new ArrayCollection();        
     }
 
     public function getId(): ?int

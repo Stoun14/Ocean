@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles;
 
     #[ORM\Column(type: 'string')]
     private $password;
@@ -44,9 +44,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 80)]
     private $city;
 
-    #[ORM\Column(type: 'string', length: 80)]
-    private $country;
-
     #[ORM\Column(type: 'string', length: 40)]
     private $phone_number;
 
@@ -63,13 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $article;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
-
-    #[ORM\PrePersist]
-    public function setCreatedAtValue()
-    {
-        $this->created_at = new \DateTimeImmutable();
-    }
+    private $isVerified;
 
     #[ORM\PreUpdate]
     public function setUpdatedAtValue()
@@ -79,8 +70,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     public function __construct()
     {
+        $this->roles = ["ROLE_USER"];
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = null;
         $this->orders = new ArrayCollection();
-        $this->article = new ArrayCollection();
+        $this->article = new ArrayCollection();       
+        $this->isVerified = false;
     }
 
     public function getId(): ?int
@@ -124,8 +119,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -228,18 +221,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCity(string $city): self
     {
         $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
 
         return $this;
     }
@@ -352,4 +333,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
     
+    // public function __toString()
+    // {
+    //     return $this->firstname;
+    // }
 }
