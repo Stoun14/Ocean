@@ -30,10 +30,14 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUser($this->getUser());
             $file = $form->get('image')->getData();
-            $newFilename = uniqid().'.'.$file->guessExtension();
-            $file->move($this->getParameter('images_upload'), $newFilename);
-            $article->setImage($newFilename); 
+            if ($file) {
+                $newFilename = uniqid().'.'.$file->guessExtension();
+                $file->move($this->getParameter('images_upload'), $newFilename);
+                $article->setImage($newFilename);
+            }
+             
             $entityManager->persist($article);
             $entityManager->flush();
 

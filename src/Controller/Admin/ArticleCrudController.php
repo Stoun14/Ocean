@@ -3,14 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
-use DateTime;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use Symfony\Component\DomCrawler\Field\FileFormField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -22,20 +20,26 @@ class ArticleCrudController extends AbstractCrudController
         return Article::class;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $article = new Article();
+        $article->setUser($this->getUser());
+
+        return $article;
+    }
     
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextField::new('header'),            
-            ImageField::new('image')
+            IdField::new('id', "ID:")->hideOnForm(),
+            TextField::new('title', "Titre:"),
+            TextField::new('header', "Chapô:"),            
+            ImageField::new('image', "Illustration:")
                 ->setBasePath(self::ARTICLE_BASE_PATH)
                 ->setUploadDir(self::ARTICLE_UPLOAD_DIR),
-            TextEditorField::new('content'),         
-            DateTimeField::new('created_at')->hideOnForm(),
-            DateTimeField::new('updated_at')->hideOnForm(),
-            IdField::new('user_id')->hideOnForm(),
+            TextareaField::new('content', "Corps de l'article:"),                     
+            DateTimeField::new('created_at', "Ajouté le:")->hideOnForm(),
+            DateTimeField::new('updated_at', "Modifié le:")->hideOnForm(),            
         ];
     }
     

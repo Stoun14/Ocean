@@ -1,45 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Products index{% endblock %}
+{% block title %}Boutique
+{% endblock %}
 
 {% block main %}
-    <h1>Products index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.image }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('products_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('products_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('products_new') }}">Create new</a>
+	<div class="container">
+		<h1>Boutique</h1>
+		<div class="row">
+			{% for product in products %}
+				<div class="col-3 justify-content-between">
+					<div class="card">
+						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+							<img src="{{asset('images/products/' ~ product.image)}}" class="img-fluid"/>
+							<a href="{{ path('products_show', {'id': product.id}) }}">
+								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+							</a>
+						</div>
+						<div class="card-header">{{ product.price }}
+							€</div>
+						<div class="card-body">
+							<h5 class="card-title">{{ product.name }}</h5>
+							<p class="card-text">
+								{{ product.description }}
+							</p>
+						</div>
+						<div class="card-footer">
+							<button type="button" class="btn btn-primary">Ajouter au panier</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

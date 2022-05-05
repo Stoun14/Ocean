@@ -46,7 +46,7 @@ class Article
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
-        $this->updated_at = null;
+        $this->updated_at = null;       
     }
 
     public function getId(): ?int
@@ -136,5 +136,10 @@ class Article
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }

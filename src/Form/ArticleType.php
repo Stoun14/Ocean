@@ -16,8 +16,6 @@ class ArticleType extends AbstractType
             ->add('header')
             ->add('content')
             ->add('image')
-            ->add('created_at')
-            ->add('updated_at')
         ;
     }
 

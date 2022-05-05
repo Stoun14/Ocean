@@ -1,77 +1,53 @@
-<div class="container-fluid bg-light">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
 	<div
-		class="d-flex flex-row justify-content-end">
-		<!-- Top Navbar -->
-		<div class="me-2">
-			<i class="fa-solid fa-user"></i>
-		</div>
-		<div class="me-4">
-			<a href="{{path('register')}}">
-				S'enregistrer
-			</a>
-		</div>
-		<div class="me-4" style="border-left: 1px;">
-			<a href="{{path('login')}}">Connexion</a>
-		</div>
+		class="container-fluid">
+		<!-- Navbar brand -->
+		<a class="navbar-brand nav-link" href="{{path('home')}}">
+			<img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo de l'association" width="32" height="32"/>
+		</a>
+		<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="fas fa-bars"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarExample01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link badge bg-light" aria-current="page" href="{{path('home')}}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link badge bg-light" href="{{path('products_index')}}">Boutique</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link badge bg-light" href="{{path('admin')}}">Admin</a>
+				</li>
+			</ul>
+			{% if app.user %}
+				<ul class="navbar-nav flex-row align-items-center justify-content-end">
+					<li class="nav-item">
+						<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('user')}}">
+							<i class="fa-solid fa-user me-1"></i>Profil
+						</a>
+					</li>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('logout')}}">
+						<i class="fa-solid fa-right-to-bracket me-1"></i>Déconnexion
+					</a>
+				</li>
+			</ul>
+		{% else %}
+			<ul class="navbar-nav flex-row align-items-center justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('register')}}">
+						<i class="fa-solid fa-users me-1"></i>Inscription
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('login')}}">
+						<i class="fa-solid fa-user me-1"></i>Connexion
+					</a>
+				</li>
+			</ul>
+		{% endif %}
 	</div>
-</div>
-<div class="container-fluid">
-	<a class="navbar-brand" href="{{path('home')}}"><img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo de l'association" width="50" height="50"></a>
-</div>
-<header>
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-		<div class="container">
-			<a class="navbar-brand" href="#!">
-				<span style="color: #5e9693;">Psycho</span>
-				<span style="color: #fff;">logist</span>
-			</a>
-			<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Offer</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Features</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Portfolio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Reference</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Team</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#!">Contact</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav d-flex flex-row">
-					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link" href="#!">
-							<i class="fas fa-shopping-cart"></i>
-						</a>
-					</li>
-					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link" href="#!">
-							<i class="fab fa-twitter"></i>
-						</a>
-					</li>
-					<li class="nav-item me-3 me-lg-0">
-						<a class="nav-link" href="#!">
-							<i class="fab fa-instagram"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- Navbar -->
-</header>
+</div></nav><!-- Navbar -->

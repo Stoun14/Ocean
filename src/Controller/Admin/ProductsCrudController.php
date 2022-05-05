@@ -8,7 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ProductsCrudController extends AbstractCrudController
@@ -25,15 +26,15 @@ class ProductsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('name'),            
-            ImageField::new('image')
+            IdField::new('id', "ID:")->hideOnForm(),
+            TextField::new('name', "Intitulé:"),            
+            ImageField::new('image', "Image:")
                 ->setBasePath(self::PRODUCT_BASE_PATH)
                 ->setUploadDir(self::PRODUCT_UPLOAD_DIR),
-            TextEditorField::new('description'),
-            MoneyField::new('content')->setCurrency('EUR'),         
-            DateTimeField::new('created_at')->hideOnForm(),
-            DateTimeField::new('updated_at')->hideOnForm(),
+            TextareaField::new('description', 'Description:'),
+            MoneyField::new('price', "Prix:")->setCurrency('EUR'),         
+            DateTimeField::new('created_at', "Ajouté le:")->hideOnForm(),
+            DateTimeField::new('updated_at', "Modifié le:")->hideOnForm(),
         ];
     }
     

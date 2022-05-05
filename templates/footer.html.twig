@@ -34,7 +34,7 @@
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
   <!-- Section: Social media -->
-  <section
+  <section style="background-color: rgba(0, 0, 0, 0.05);"
     class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
   >
     <!-- Left -->
@@ -71,12 +71,15 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Association OCEAN
+            Association OCEAN
           </h6>
+          <p><i class="fas fa-home me-3"></i>3 Rue de la plaine </p>
+              <p>   91000 Evry</p>
           <p>
-            3 Rue de la plaine <br />
-            91000 Evry
+            <i class="fas fa-envelope me-3"></i>
+            info@ocean.fr
           </p>
+          <p><i class="fas fa-phone me-3"></i>01 23 45 67 88</p>
         </div>
         <!-- Grid column -->
 
@@ -84,19 +87,16 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Products
+            engagement
           </h6>
           <p>
-            <a href="#!" class="text-reset">Angular</a>
+            <a href="{{path('home')}}" class="text-reset">Accueil</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">React</a>
+            <a href="#!" class="text-reset">Boutique</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
+            <a href="#!" class="text-reset">Donations</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -105,36 +105,35 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
+            information
           </h6>
           <p>
-            <a href="#!" class="text-reset">Pricing</a>
+            <a href="#!" class="text-reset">Actualités</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Settings</a>
+            <a href="#!" class="text-reset">Contact</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="#!" class="text-reset">Plan du site</a>
           </p>
         </div>
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Contact
+            crédits
           </h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
           <p>
-            <i class="fas fa-envelope me-3"></i>
-            info@example.com
+            <a href="#!" class="text-reset">Cgu</a>
           </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          <p>
+            <a href="#!" class="text-reset">Rgpd</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Mentions légales</a>
+          </p>
         </div>
         <!-- Grid column -->
       </div>
@@ -144,8 +143,8 @@
   <!-- Section: Links  -->
 
   <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    <p>
+  <div style="background-color: rgba(0, 0, 0, 0.05); height: 25px;">
+    <p class="d-flex justify-content-center align-items-center">
         &copy; CSilene 
             {{ ("now"|date("Y")) is same as("2022") ? 2022 : ("2022 - " ~ "now"|date("Y")) }}          
     </p>
