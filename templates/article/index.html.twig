@@ -1,45 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}Article index
+{% endblock %}
 
 {% block main %}
-    <h1>Article index</h1>
+	{# <h1>Article index</h1>												
+				{% for article in articles %}
+					<tr>
+						<td>{{ article.id }}</td>
+						<td>{{ article.title }}</td>
+						<td>{{ article.header }}</td>
+						<td>{{ article.content }}</td>
+						<td>{{ article.image }}</td>
+						<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>
+							<a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+							<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	
+		<a href="{{ path('article_new') }}">Create new</a> #}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Header</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.header }}</td>
-                <td>{{ article.content }}</td>
-                <td>{{ article.image }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('article_new') }}">Create new</a>
+	<div class="container">
+		<div class="row masonry-grid">
+			{% for article in articles %}
+				<div class="col-md-6 col-lg-4 masonry-column">
+					<div class="card">
+						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+							<img src="{{asset('images/articles/' ~ article.image)}}" class="img-fluid"/>
+							<a href="{{ path('article_show', {'id': article.id}) }}">
+								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)">Test</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

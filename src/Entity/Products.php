@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductsRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Products
 {
     #[ORM\Id]
@@ -33,12 +34,21 @@ class Products
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updated_at;
 
-    #[ORM\ManyToMany(targetEntity: Orders::class, inversedBy: 'products')]
-    private $orders;
+    #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrderLine::class)]
+    private $orderLines;
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTimeImmutable();
+    }
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = null;
+        $this->orderLines = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -118,26 +128,37 @@ class Products
         return $this;
     }
 
-    /**
-     * @return Collection<int, Orders>
-     */
-    public function getOrders(): Collection
+    public function __toString()
     {
-        return $this->orders;
+        return $this->name;
     }
 
-    public function addOrder(Orders $order): self
+    /**
+     * @return Collection<int, OrderLine>
+     */
+    public function getOrderLines(): Collection
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
+        return $this->orderLines;
+    }
+
+    public function addOrderLine(OrderLine $orderLine): self
+    {
+        if (!$this->orderLines->contains($orderLine)) {
+            $this->orderLines[] = $orderLine;
+            $orderLine->setProducts($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Orders $order): self
+    public function removeOrderLine(OrderLine $orderLine): self
     {
-        $this->orders->removeElement($order);
+        if ($this->orderLines->removeElement($orderLine)) {
+            // set the owning side to null (unless already changed)
+            if ($orderLine->getProducts() === $this) {
+                $orderLine->setProducts(null);
+            }
+        }
 
         return $this;
     }

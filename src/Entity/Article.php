@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Article
 {
     #[ORM\Id]
@@ -34,6 +36,18 @@ class Article
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'article')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTimeImmutable();
+    }
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = null;       
+    }
 
     public function getId(): ?int
     {
@@ -122,5 +136,10 @@ class Article
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }

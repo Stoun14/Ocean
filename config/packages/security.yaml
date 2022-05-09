@@ -22,9 +22,9 @@ security:
             provider: app_user_provider
             custom_authenticator: App\Security\Authenticator
             logout:
-                path: app_logout
+                path: logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: home
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -32,11 +32,20 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+            remember_me:
+                secret: "%kernel.secret%" # required
+                lifetime: 604800 # 1 week in seconds
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+                signature_properties: ["password", "updatedAt"]
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
 
     role_hierarchy:
         ROLE_EDITOR: ROLE_USER

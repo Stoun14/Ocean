@@ -1,21 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+	Enregistrement
+{% endblock %}
 
-{% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+{% block header %}
+	{% include "navbar.html.twig" %}
+{% endblock %}
 
-    <h1>Register</h1>
+{% block main %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+	<h1>S'enregistrer</h1>
+
+	{{ form_start(registrationForm) }}
+	{{ form_row(registrationForm.firstname, {
+		label: 'Prénom:'
+		}) }}
+	{{ form_row(registrationForm.lastname, {
+		label: 'Nom:'
+		}) }}
+	{{ form_row(registrationForm.address, {
+		label: 'Adresse:'
+		}) }}
+	{{ form_row(registrationForm.zip, {
+		label: 'Code Postal:'
+		}) }}
+	{{ form_row(registrationForm.city, {
+		label: 'Ville:'
+		}) }}
+	{{ form_row(registrationForm.phone_number, {
+		label: 'Numéro de Téléphone:'
+		}) }}
+	{{ form_row(registrationForm.email, {
+		label: 'E-mail:'
+		}) }}
+	{{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de Passe:'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+	{{ form_row(registrationForm.agreeTerms) }}
+
+	<button type="submit" class="btn mb-5">Register</button>
+	{{ form_end(registrationForm) }}
 {% endblock %}
