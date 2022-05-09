@@ -1,27 +1,31 @@
+/************/
+/* Carousel */
+/************/
+
 /* Carousel styling */
 #introCarousel,
 .carousel-inner,
 .carousel-item,
 .carousel-item.active {
-    height: 95vh;
+    height: 100vh;
 }
 
 .carousel-item:nth-child(1) {
-    background-image: url('../images/rorqual_commun.jpg');
+    background-image: url("../images/rorqual_commun.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-item:nth-child(2) {
-    background-image: url('../images/baleines_noires.jpg');
+    background-image: url("../images/baleines_noires.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-item:nth-child(3) {
-    background-image: url('../images/recif_coralien.jpg');
+    background-image: url("../images/recif_coralien.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -34,10 +38,43 @@
     }
 }
 
+/**************/
+/* Page Login */
+/**************/
+
+#intro {
+    background-image: url("../images/sea.jpg");
+    height: 100vh;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+    #intro {
+        margin-top: -58.59px;
+    }
+}
+
+/**********/
+/* Navbar */
+/**********/
+
 .navbar .nav-link {
     color: #000 !important;
 }
 
 .shadow-custom {
     box-shadow: 0 2px 5px 0 #fff, 0 3px 10px 5px rgba(255, 255, 255, 0.5) !important;
+}
+
+.mask-custom {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.masonry-column {
+    padding: 0 1px;
+}
+
+.masonry-grid > div .thumbnail {
+    margin: 5px 1px;
 }

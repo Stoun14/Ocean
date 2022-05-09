@@ -32,7 +32,5 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
         $entity->setPassword($this->userPasswordHasher->hashPassword($entity, $entity->getPassword()));
-    }
-
-    
+    }  
 }

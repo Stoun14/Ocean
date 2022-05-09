@@ -1,10 +1,10 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+<nav class="navbar navbar-expand-lg navbar-dark mask-custom d-none d-lg-block" style="z-index: 2000;">
 	<div
 		class="container-fluid">
 		<!-- Navbar brand -->
 		<a class="navbar-brand nav-link" href="{{path('home')}}">
-			<img src="{{ asset('images/dc6c45ebdaf946dfbce1d9e3e858e3ea.png') }}" alt="logo de l'association" width="32" height="32"/>
+			<img src="{{ asset('images/logo_rond.png') }}" alt="logo arrondi de l'association" width="50" height="50"/>
 		</a>
 		<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
 			<i class="fas fa-bars"></i>
@@ -12,42 +12,42 @@
 		<div class="collapse navbar-collapse" id="navbarExample01">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link badge bg-light" aria-current="page" href="{{path('home')}}">Accueil</a>
+					<a class="nav-link mx-2" aria-current="page" href="{{path('home')}}">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link badge bg-light" href="{{path('products_index')}}">Boutique</a>
+					<a class="nav-link mx-2" href="{{path('products_index')}}">Boutique</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link badge bg-light" href="{{path('admin')}}">Admin</a>
-				</li>
-			</ul>
-			{% if app.user %}
-				<ul class="navbar-nav flex-row align-items-center justify-content-end">
+				{% if is_granted('ROLE_ADMIN') %}
 					<li class="nav-item">
+						<a class="nav-link mx-2" href="{{path('admin')}}">Admin</a>
+					</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav flex-row align-items-center justify-content-end">
+				<li class="nav-item">
+					{% if app.user %}
 						<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('user')}}">
 							<i class="fa-solid fa-user me-1"></i>Profil
 						</a>
-					</li>
+					{% else %}
+						<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('register')}}">
+							<i class="fa-solid fa-users me-1"></i>Inscription
+						</a>
+					{% endif %}
 				</li>
 				<li class="nav-item">
-					<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('logout')}}">
-						<i class="fa-solid fa-right-to-bracket me-1"></i>Déconnexion
-					</a>
+					{% if app.user %}
+						<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('logout')}}">
+							<i class="fa-solid fa-right-to-bracket me-1"></i>Déconnexion
+						</a>
+					{% else %}
+						<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('login')}}">
+							<i class="fa-solid fa-user me-1"></i>Connexion
+						</a>
+					{% endif %}
 				</li>
 			</ul>
-		{% else %}
-			<ul class="navbar-nav flex-row align-items-center justify-content-end">
-				<li class="nav-item">
-					<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('register')}}">
-						<i class="fa-solid fa-users me-1"></i>Inscription
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('login')}}">
-						<i class="fa-solid fa-user me-1"></i>Connexion
-					</a>
-				</li>
-			</ul>
-		{% endif %}
+		</div>
 	</div>
-</div></nav><!-- Navbar -->
+</nav>
+<!-- Navbar -->

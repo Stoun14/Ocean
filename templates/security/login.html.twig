@@ -4,49 +4,70 @@
 	Connexion!
 {% endblock %}
 
-{% block header %}
-	{% include "navbar.html.twig" %}
-{% endblock %}
+{% block header %}{% endblock %}
 
 {% block main %}
-	<div class="container my-5">
-		<form method="post">
-			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
+	<!-- Background image -->
+	<div id="intro" class="bg-image shadow-2-strong">
+		<div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-xl-5 col-md-8">
+						<form method="post" class="bg-white rounded-5 shadow-5-strong p-5">
+							{% if error %}
+								<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
 
-			{% if app.user %}
-				<div class="mb-3">
-					Vous êtes connecté en tant que
-					{{ app.user.username }},
-					<a href="{{ path('logout') }}">Deconnexion</a>
+							{% if app.user %}
+								<div class="mb-3">
+									Vous êtes connecté en tant que
+									{{ app.user.username }},
+									<a href="{{ path('logout') }}">Deconnexion</a>
+								</div>
+							{% endif %}
+							<!-- Email input -->
+							<div class="form-outline mb-4">
+								<input type="email" name="email" id="inputEmail" class="form-control" required autofocus/>
+								<label class="form-label" for="inputEmail">Email:</label>
+							</div>
+
+							<!-- Password input -->
+							<div class="form-outline mb-4">
+								<input type="password" name="password" id="inputPassword" class="form-control" required/>
+								<label class="form-label" for="inputPassword">Mot de passe:</label>
+							</div>
+
+							<input
+							type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+							<!-- 2 column grid layout for inline styling -->
+							<div class="row mb-4">
+								<div
+									class="col d-flex justify-content-center">
+									<!-- Checkbox -->
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" name="_remember_me" id="remember" checked/>
+										<label class="form-check-label" for="remember">
+											Souvenez-vous de moi
+										</label>
+									</div>
+								</div>
+
+								<div
+									class="col text-center">
+									<!-- Simple link -->
+									<a href="{{path('app_forgot_password_request')}}">Mot de passe oublié?</a>
+								</div>
+							</div>
+
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-primary btn-block">Connexion</button>
+						</form>
+					</div>
 				</div>
-			{% endif %}
-
-			<h1 class="h3 mb-6 font-weight-normal">Veuillez vous connecter:</h1>
-			<label for="inputEmail">Email:</label>
-			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" required autofocus>
-			<label for="inputPassword">Mot de passe:</label>
-			<input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" required>
-
-			<input
-			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-			{#
-												                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-												                See https://symfony.com/doc/current/security/remember_me.html
-												
-												                <div class="checkbox mb-3">
-												                    <label>
-												                        <input type="checkbox" name="_remember_me"> Remember me
-												                    </label>
-												                </div>
-												            #}
-
-			<button class="btn btn-lg btn-primary" type="submit">
-				Connexion
-			</button>
-		</form>
-		<a href="{{path('app_forgot_password_request')}}">Mot de passe oublié</a>
+			</div>
+		</div>
 	</div>
+	<!-- Background image -->
 {% endblock %}
+{% block footer %}{% endblock %}
