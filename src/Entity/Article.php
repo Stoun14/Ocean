@@ -40,12 +40,12 @@ class Article
     #[ORM\PreUpdate]
     public function setUpdatedAtValue()
     {
-        $this->updated_at = new \DateTimeImmutable();
+        $this->updated_at = new \DateTime();
     }
 
     public function __construct()
     {
-        $this->created_at = new \DateTimeImmutable();
+        $this->created_at = new \DateTime();
         $this->updated_at = null;       
     }
 

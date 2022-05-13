@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-	{% include "navbar.html.twig" %}
+	{% include "partials/navbar.html.twig" %}
 {% endblock %}
 
 {% block main %}
@@ -38,10 +38,12 @@
 		label: 'E-mail:'
 		}) }}
 	{{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de Passe:'
+		label: 'Mot de Passe:'
         }) }}
 
-	{{ form_row(registrationForm.agreeTerms) }}
+	{{ form_row(registrationForm.agreeTerms, {
+		label: "Accepter les conditions d'utilisations"
+		}) }}
 
 	<button type="submit" class="btn mb-5">Register</button>
 	{{ form_end(registrationForm) }}

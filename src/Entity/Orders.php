@@ -16,42 +16,48 @@ class Orders
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'float')]
-    private $total;
-
-    #[ORM\Column(type: 'boolean')]
-    private $pending;
-
-    #[ORM\Column(type: 'boolean')]
-    private $payed;
-
-    #[ORM\Column(type: 'boolean')]
-    private $fail;
-
-    #[ORM\Column(type: 'datetime_immutable')]
-    private $created_at;
-
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    private $updated_at;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $fullname;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrderLine::class)]
-    private $orderLines;
+    #[ORM\Column(type: 'boolean')]
+    private $is_paid;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $reference;    
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $carrier_name;
+
+    #[ORM\Column(type: 'float')]
+    private $carrier_price;
+
+    #[ORM\Column(type: 'text')]
+    private $delivery_address;
+
+    #[ORM\Column(type: 'datetime')]
+    private $created_at;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $updated_at;
+
+    #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrderDetails::class, orphanRemoval: true)]
+    private $orderDetails;    
 
     #[ORM\PreUpdate]
     public function setUpdatedAtValue()
     {
-        $this->updated_at = new \DateTimeImmutable();
+        $this->updated_at = new \DateTime();
     }
 
     public function __construct()
     {
-        $this->created_at = new \DateTimeImmutable();
+        $this->created_at = new \DateTime();
         $this->updated_at = null;
-        $this->orderLines = new ArrayCollection();        
+        $this->orderDetails = new ArrayCollection();        
     }
 
     public function getId(): ?int
@@ -71,60 +77,24 @@ class Orders
         return $this;
     }
 
-    public function getPending(): ?bool
-    {
-        return $this->pending;
-    }
-
-    public function setPending(bool $pending): self
-    {
-        $this->pending = $pending;
-
-        return $this;
-    }
-
-    public function getPayed(): ?bool
-    {
-        return $this->payed;
-    }
-
-    public function setPayed(bool $payed): self
-    {
-        $this->payed = $payed;
-
-        return $this;
-    }
-
-    public function getFail(): ?bool
-    {
-        return $this->fail;
-    }
-
-    public function setFail(bool $fail): self
-    {
-        $this->fail = $fail;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTime $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
+    public function setUpdatedAt(?\DateTime $updated_at): self
     {
         $this->updated_at = $updated_at;
 
@@ -143,33 +113,106 @@ class Orders
         return $this;
     }
 
-    /**
-     * @return Collection<int, OrderLine>
-     */
-    public function getOrderLines(): Collection
+    public function getReference(): ?string
     {
-        return $this->orderLines;
+        return $this->reference;
     }
 
-    public function addOrderLine(OrderLine $orderLine): self
+    public function setReference(string $reference): self
     {
-        if (!$this->orderLines->contains($orderLine)) {
-            $this->orderLines[] = $orderLine;
-            $orderLine->setOrders($this);
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getFullname(): ?string
+    {
+        return $this->fullname;
+    }
+
+    public function setFullname(string $fullname): self
+    {
+        $this->fullname = $fullname;
+
+        return $this;
+    }
+
+    public function getCarrierName(): ?string
+    {
+        return $this->carrier_name;
+    }
+
+    public function setCarrierName(string $carrier_name): self
+    {
+        $this->carrier_name = $carrier_name;
+
+        return $this;
+    }
+
+    public function getCarrierPrice(): ?float
+    {
+        return $this->carrier_price;
+    }
+
+    public function setCarrierPrice(float $carrier_price): self
+    {
+        $this->carrier_price = $carrier_price;
+
+        return $this;
+    }
+
+    public function getDeliveryAddress(): ?string
+    {
+        return $this->delivery_address;
+    }
+
+    public function setDeliveryAddress(string $delivery_address): self
+    {
+        $this->delivery_address = $delivery_address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderDetails>
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails[] = $orderDetail;
+            $orderDetail->setOrders($this);
         }
 
         return $this;
     }
 
-    public function removeOrderLine(OrderLine $orderLine): self
+    public function removeOrderDetail(OrderDetails $orderDetail): self
     {
-        if ($this->orderLines->removeElement($orderLine)) {
+        if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderLine->getOrders() === $this) {
-                $orderLine->setOrders(null);
+            if ($orderDetail->getOrders() === $this) {
+                $orderDetail->setOrders(null);
             }
         }
 
         return $this;
+    }    
+    
+    public function getIsPaid(): ?bool
+    {
+        return $this->is_paid;
     }
+
+    public function setIsPaid(bool $is_paid): self
+    {
+        $this->is_paid = $is_paid;
+
+        return $this;
+    }
+
 }

@@ -10,9 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Total</th>
-                <th>Pending</th>
                 <th>Payed</th>
-                <th>Fail</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
                 <th>actions</th>
@@ -23,9 +21,7 @@
             <tr>
                 <td>{{ order.id }}</td>
                 <td>{{ order.total }}</td>
-                <td>{{ order.pending ? 'Yes' : 'No' }}</td>
                 <td>{{ order.payed ? 'Yes' : 'No' }}</td>
-                <td>{{ order.fail ? 'Yes' : 'No' }}</td>
                 <td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ order.updatedAt ? order.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

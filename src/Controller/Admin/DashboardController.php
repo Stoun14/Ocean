@@ -58,10 +58,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Afficher les articles', 'fas fa-eye', Article::class),
             MenuItem::linkToCrud('Créer un article', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW)
         ]);
-        yield MenuItem::subMenu('Commandes', 'fas fa-list')->setSubItems([            
-            MenuItem::linkToCrud('Afficher les Commandes', 'fas fa-eye', Orders::class),
-            MenuItem::linkToCrud('Créer une Commande', 'fas fa-plus', Orders::class)->setAction(Crud::PAGE_NEW)
-        ]);
+        // yield MenuItem::subMenu('Commandes', 'fas fa-list')->setSubItems([            
+        //     MenuItem::linkToCrud('Afficher les Commandes', 'fas fa-eye', Orders::class),
+        //     MenuItem::linkToCrud('Créer une Commande', 'fas fa-plus', Orders::class)->setAction(Crud::PAGE_NEW)
+        // ]);
         yield MenuItem::subMenu('Produits', 'fas fa-tags')->setSubItems([            
             MenuItem::linkToCrud('Afficher les produits', 'fas fa-eye', Products::class),
             MenuItem::linkToCrud('Créer un produit', 'fas fa-plus', Products::class)->setAction(Crud::PAGE_NEW)

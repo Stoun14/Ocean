@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\OrderLine;
+use App\Entity\OrderDetails;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method OrderLine|null find($id, $lockMode = null, $lockVersion = null)
- * @method OrderLine|null findOneBy(array $criteria, array $orderBy = null)
- * @method OrderLine[]    findAll()
- * @method OrderLine[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method OrderDetails|null find($id, $lockMode = null, $lockVersion = null)
+ * @method OrderDetails|null findOneBy(array $criteria, array $orderBy = null)
+ * @method OrderDetails[]    findAll()
+ * @method OrderDetails[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class OrderLineRepository extends ServiceEntityRepository
+class OrderDetailsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, OrderLine::class);
+        parent::__construct($registry, OrderDetails::class);
     }
 
     // /**
-    //  * @return OrderLine[] Returns an array of OrderLine objects
+    //  * @return OrderDetails[] Returns an array of OrderDetails objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class OrderLineRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?OrderLine
+    public function findOneBySomeField($value): ?OrderDetails
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.exampleField = :val')

@@ -14,9 +14,7 @@ class OrdersType extends AbstractType
     {
         $builder
             ->add('total')
-            ->add('pending')
             ->add('payed')
-            ->add('fail')
             ->add('created_at')
             ->add('updated_at')
             ->add('products')
