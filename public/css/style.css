@@ -38,12 +38,15 @@
     }
 }
 
-/**************/
-/* Page Login */
-/**************/
+/**************************/
+/* Page Login et Register */
+/**************************/
 
 #intro {
     background-image: url("../images/sea.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     height: 100vh;
 }
 
@@ -62,19 +65,7 @@
     color: #000 !important;
 }
 
-.shadow-custom {
-    box-shadow: 0 2px 5px 0 #fff, 0 3px 10px 5px rgba(255, 255, 255, 0.5) !important;
-}
-
 .mask-custom {
     backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-.masonry-column {
-    padding: 0 1px;
-}
-
-.masonry-grid > div .thumbnail {
-    margin: 5px 1px;
+    background-color: rgba(176, 212, 235, 0.628);
 }

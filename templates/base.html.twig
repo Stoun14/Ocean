@@ -25,6 +25,9 @@
 		<header>
 			{% block header %}
 				{% include "partials/navbar.html.twig" %}
+				{% if block('carousel') is defined %}
+					{% include "partials/headerHome.html.twig" %}
+				{% endif %}
 			{% endblock %}
 		</header>
 		<main>

@@ -36,12 +36,15 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "Accepter les conditions:",
+                'label' => " ",
+                'attr' => [
+                    'class' => 'form-check',
+                ],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter les conditions!',
                     ]),
-                ],
+                ]
             ])
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
@@ -60,9 +63,19 @@ class RegistrationFormType extends AbstractType
                         'max' => 255,
                     ]),
                 ],
-                'first_options' => ['label' => "Mot de Passe:"],
-                'second_options' => ['label' => "Répétez votre mot de passe:"],
-            ])            
+                'first_options' => [
+                    'label' => "Mot de Passe:",
+                    // 'attr' => [
+                    //     'class' => 'form-control',
+                    // ]
+                ],
+                'second_options' => [
+                    'label' => "Répétez votre mot de passe:",
+                    // 'attr' => [
+                    //     'class' => 'form-control',
+                    // ]
+                ]
+            ])
             ->add('firstname', TextType::class, [
                 'constraints' => [
                     new Length([
@@ -81,8 +94,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('address', TextType::class, [
-            ])
+            ->add('address', TextType::class, [])
             ->add('zip', NumberType::class, [
                 'constraints' => [
                     new Length([
@@ -101,11 +113,8 @@ class RegistrationFormType extends AbstractType
                         'max' => 255,
                     ]),
                 ],
-            ])            
-            ->add('phone_number', TelType::class, [
-                
             ])
-        ;
+            ->add('phone_number', TelType::class, []);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
