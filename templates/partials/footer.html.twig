@@ -1,9 +1,7 @@
 <!-- Footer -->
-<div
-	class="text-center text-lg-start bg-light text-muted">
+<div class="text-center text-lg-start bg-light text-muted">
 	<!-- Section: Social media -->
-	<section
-		style="background-color: rgba(0, 0, 0, 0.05);" class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+	<section style="background-color: rgba(0, 0, 0, 0.05);" class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 		<!-- Left -->
 		<div class="me-5 d-none d-lg-block">
 			<span>Retrouvez-nous sur les réseaux sociaux:</span>
@@ -33,9 +31,11 @@
 	<section class="">
 		<div
 			class="container text-center text-md-start mt-5">
+
 			<!-- Grid row -->
 			<div
 				class="row mt-3">
+
 				<!-- Grid column -->
 				<div
 					class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -44,14 +44,11 @@
 						Association OCEAN
 					</h6>
 					<p>
-						<i class="fas fa-home me-3"></i>3 Rue de la plaine
+						<i class="fas fa-home me-3"></i>
+						3 Rue de la plaine</br>91000 Evry
 					</p>
 					<p>
-						91000 Evry</p>
-					<p>
-						<i class="fas fa-envelope me-3"></i>
-						info@ocean.fr
-					</p>
+						<i class="fas fa-envelope me-3"></i>info@ocean.fr</p>
 					<p>
 						<i class="fas fa-phone me-3"></i>01 23 45 67 88</p>
 				</div>
@@ -60,12 +57,13 @@
 				<!-- Grid column -->
 				<div
 					class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
 					<!-- Links -->
 					<h6 class="text-uppercase fw-bold mb-4">
 						engagement
 					</h6>
 					<p>
-						<a href="{{path('home')}}" class="text-reset">Accueil</a>
+						<a href="{{ path('home') }}" class="text-reset">Accueil</a>
 					</p>
 					<p>
 						<a href="#!" class="text-reset">Boutique</a>
@@ -103,7 +101,7 @@
 						crédits
 					</h6>
 					<p>
-						<a href="#!" class="text-reset">Cgu</a>
+						<a href="{{ path('cgu') }}" target="_blank" class="text-reset">Cgu</a>
 					</p>
 					<p>
 						<a href="#!" class="text-reset">Rgpd</a>
@@ -113,8 +111,10 @@
 					</p>
 				</div>
 				<!-- Grid column -->
+
 			</div>
 			<!-- Grid row -->
+
 		</div>
 	</section>
 	<!-- Section: Links  -->
@@ -122,10 +122,10 @@
 	<!-- Copyright -->
 	<div style="background-color: rgba(0, 0, 0, 0.05); height: 25px;">
 		<p class="d-flex justify-content-center align-items-center">
-			&copy; CSilene
-			{{ ("now"|date("Y")) is same as("2022") ? 2022 : ("2022 - " ~ "now"|date("Y")) }}
+			&copy; CSilene {{ ("now"|date("Y")) is same as("2022") ? 2022 : ("2022 - " ~ "now"|date("Y")) }}
 		</p>
 	</div>
 	<!-- Copyright -->
+
 </div>
 <!-- Footer -->

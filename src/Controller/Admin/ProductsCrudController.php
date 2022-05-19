@@ -22,20 +22,20 @@ class ProductsCrudController extends AbstractCrudController
         return Products::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id', "ID:")->hideOnForm(),
-            TextField::new('name', "Intitulé:"),            
+            TextField::new('name', "Intitulé:"),
+            TextField::new('slug'),
             ImageField::new('image', "Image:")
                 ->setBasePath(self::PRODUCT_BASE_PATH)
                 ->setUploadDir(self::PRODUCT_UPLOAD_DIR),
             TextareaField::new('description', 'Description:'),
-            MoneyField::new('price', "Prix:")->setCurrency('EUR'),         
+            MoneyField::new('price', "Prix:")->setCurrency('EUR'),
             DateTimeField::new('created_at', "Ajouté le:")->hideOnForm(),
             DateTimeField::new('updated_at', "Modifié le:")->hideOnForm(),
         ];
     }
-    
 }

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Boutique
+{% block title %}
+	Boutique
 {% endblock %}
 
 {% block main %}
@@ -22,8 +23,7 @@
 									<!-- Product name-->
 									<h5 class="fw-bolder">{{ product.name }}</h5>
 									<!-- Product price-->
-									{{ product.price }}
-									€
+									{{ (product.price / 100) |number_format(2, ',', '.') }} €
 								</div>
 							</div>
 							<!-- Product actions-->

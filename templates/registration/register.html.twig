@@ -1,123 +1,113 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 
-{% block title %}
-	Création de compte
+{% block title %} 
+    Création de compte 
 {% endblock %}
 
 {% block main %}
-	{% for flash_error in app.flashes('verify_email_error') %}
-		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-	{% endfor %}
 
-	{# {{ form_start(registrationForm) }}
-							{{ form_row(registrationForm.firstname, {
-								label: 'Prénom:'
-								}) }}
-							{{ form_row(registrationForm.lastname, {
-								label: 'Nom:'
-								}) }}
-							{{ form_row(registrationForm.address, {
-								label: 'Adresse:'
-								}) }}
-							{{ form_row(registrationForm.zip, {
-								label: 'Code Postal:'
-								}) }}
-							{{ form_row(registrationForm.city, {
-								label: 'Ville:'
-								}) }}
-							{{ form_row(registrationForm.phone_number, {
-								label: 'Numéro de Téléphone:'
-								}) }}
-							{{ form_row(registrationForm.email, {
-								label: 'E-mail:'
-								}) }}
-							{{ form_row(registrationForm.plainPassword, {
-								label: 'Mot de Passe:'
-								}) }}
-							
-							{{ form_row(registrationForm.agreeTerms, {
-								label: "Accepter les conditions d'utilisations"
-								}) }}
-							
-							<button type="submit" class="btn mb-5">Register</button>
-							{{ form_end(registrationForm) }} #}
-	<!-- Background image -->
-	<div id="intro" class="bg-image shadow-2-strong">
-		<div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
-			<div class="container-fluid vh-100">
-				<div class="row justify-content-center">
-					<div class="col-xl-5 col-md-8 container">
-						{{ form_start(registrationForm, {'attr': {'class': 'bg-white rounded-5 shadow-5-strong p-5 mb-8'}, 'method': 'post'}) }}
-						<h1 class="text-center">Créer votre compte:</h1>
-						<div
-							class="row my-4 justify-content-evenly">
-							<!-- Firstname input -->
-							<div class="form-outline col">
-								{{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'id': 'form1Example1'}}) }}
-								<label class="form-label" for="form1Example1">Prénom</label>
-							</div>
+{% for flash_error in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+{% endfor %}
 
-							<!-- Lastname input -->
-							<div class="form-outline col">
-								{{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'id': 'form1Example2'}}) }}
-								<label class="form-label" for="form1Example2">Nom</label>
-							</div>
-						</div>
+<!-- Background image -->
+<div id="intro" class="bg-image shadow-2-strong">
+    <div
+        class="mask d-flex align-items-center h-100"
+        style="background-color: rgba(0, 0, 0, 0.8)"
+    >
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8 mb-10">
+                    {{
+                        form_start(registrationForm, {
+                            'method': 'post',
+                            'attr': {
+                                'class': "bg-white rounded-5 shadow-5-strong p-5"
+                            }                            
+                        })
+                    }}
+                    <h1 class="text-center">Créer votre compte:</h1>
+                    <div class="row my-4 justify-content-evenly">
+                        <!-- Firstname input -->
+                        <div class="form-outline col">
+                            {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'id': 'form1Example1'
+                            }}) }}
+                            <label class="form-label" for="form1Example1">Prénom</label>
+                        </div>
 
-						<!-- Email input -->
-						<div class="form-outline mb-4">
-							{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'id': 'form1Email'}}) }}
-							<label class="form-label" for="form1Email">Email</label>
-						</div>
+                        <!-- Lastname input -->
+                        <div class="form-outline col">
+                            {{ form_widget(registrationForm.lastname, {
+								'attr': {
+									'class': 'form-control', 
+									'id': 'form1Example2'}}) }}
+                            <label class="form-label" for="form1Example2">Nom</label>
+                        </div>
+                    </div>
 
-						<!-- Phone input -->
-						<div class="form-outline mb-4">
-							{{ form_widget(registrationForm.phone_number, {'attr': {'class': 'form-control', 'id': 'form1Phone'}}) }}
-							<label class="form-label" for="form1Phone">Téléphone</label>
-						</div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'id': 'form1Email'}}) }}
+                        <label class="form-label" for="form1Email">Email</label>
+                    </div>
 
-						<!-- Address input -->
-						<div class="form-outline mb-4">
-							{{ form_widget(registrationForm.address, {'attr': {'class': 'form-control', 'id': 'form1Address'}}) }}
-							<label class="form-label" for="form1Address">Addresse</label>
-						</div>
+                    <!-- Phone input -->
+                    <div class="form-outline mb-4">
+                        {{ form_widget(registrationForm.phone_number, {'attr': {'class': 'form-control', 'id': 'form1Phone'
+                        }}) }}
+                        <label class="form-label" for="form1Phone">Téléphone</label>
+                    </div>
 
-						<div
-							class="row mb-4">
-							<!-- Zip input -->
-							<div class="col">
-								{{ form_widget(registrationForm.zip, {'attr': {'class': 'form-outline', 'id': 'form1Zip'}}) }}
-								<label class="form-label" for="form1Zip">Code Postal</label>
-							</div>
+                    <!-- Address input -->
+                    <div class="form-outline mb-4">
+                        {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control', 'id': 'form1Address'
+                        }}) }}
+                        <label class="form-label" for="form1Address">Addresse</label>
+                    </div>
 
-							<!-- City input -->
-							<div class="col">
-								{{ form_widget(registrationForm.city, {'attr': {'class': 'form-outline', 'id': 'form1City'}}) }}
-								<label class="form-label" for="form1City">Ville</label>
-							</div>
-						</div>
+                    <div class="row mb-4">
+                        <!-- Zip input -->
+                        <div class="col">
+                            {{ form_widget(registrationForm.zip, {'attr': {'class': 'form-outline', 'id': 'form1Zip'
+                            }}) }}
+                            <label class="form-label" for="form1Zip">Code Postal</label>
+                        </div>
 
-						<!-- Password input -->
-						{{ form_row(registrationForm.plainPassword) }}
-						<!-- Checkbox -->
-						<div class="form-control mb-4">
-							{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input', 'id': 'flexCheckDefault'}}) }}
-							<label class="form-check-label" for="flexCheckDefault">
-								Accepter les
-								<a href="#!">conditions d'utilisation</a>
-							</label>
-						</div>
+                        <!-- City input -->
+                        <div class="col">
+                            {{ form_widget(registrationForm.city, {'attr': {'class': 'form-outline', 'id': 'form1City'
+                            }}) }}
+                            <label class="form-label" for="form1City">Ville</label>
+                        </div>
+                    </div>
 
-						<!-- Submit button -->
-						<button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-						{{ form_end(registrationForm) }}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Background image -->
-{% endblock %}
-{% block footer %}
-	{{ parent() }}
+                    <!-- Password input -->
+                    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-outline', 'id': 'form1Pwd'
+                    }}) }}
+                    {{
+                        form_label(registrationForm.plainPassword, null, {
+                            label: "Mot de passe",
+                            label_attr: { class: "form-label", id: "form1Pwd" }
+                        })
+                    }}
+
+                    <!-- Checkbox -->
+                    <div class="form-control mb-4">
+                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input','id': 'flexCheckDefault'
+                        }}) }}
+                        <a href="#!">conditions d'utilisation</a>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Enregistrer
+                    </button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Background image -->
 {% endblock %}

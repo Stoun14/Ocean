@@ -18,8 +18,7 @@ class ProductsType extends AbstractType
             ->add('price')
             ->add('created_at')
             ->add('updated_at')
-            ->add('orders')
-        ;
+            ->add('orders');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
