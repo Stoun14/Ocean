@@ -12,91 +12,100 @@
 
 <!-- Background image -->
 <div id="intro" class="bg-image shadow-2-strong">
-    <div
-        class="mask d-flex align-items-center h-100"
-        style="background-color: rgba(0, 0, 0, 0.8)"
-    >
+    <div class="d-flex align-items-center">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-5 col-md-8 mb-10">
+                <div class="col-md-8 col-xl-5 my-3">
                     {{
                         form_start(registrationForm, {
                             'method': 'post',
                             'attr': {
-                                'class': "bg-white rounded-5 shadow-5-strong p-5"
+                                'class': "mask-custom rounded-5 shadow-5-strong p-5",
+                                'id': 'page-form'
                             }                            
                         })
                     }}
                     <h1 class="text-center">Créer votre compte:</h1>
-                    <div class="row my-4 justify-content-evenly">
+                    <div class="row my-4">
+
                         <!-- Firstname input -->
-                        <div class="form-outline col">
+                        <div class="form-outline col-6 mb-3">
                             {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'id': 'form1Example1'
                             }}) }}
                             <label class="form-label" for="form1Example1">Prénom</label>
                         </div>
 
                         <!-- Lastname input -->
-                        <div class="form-outline col">
+                        <div class="form-outline col-6 mb-3">
                             {{ form_widget(registrationForm.lastname, {
 								'attr': {
 									'class': 'form-control', 
 									'id': 'form1Example2'}}) }}
                             <label class="form-label" for="form1Example2">Nom</label>
                         </div>
-                    </div>
 
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'id': 'form1Email'}}) }}
-                        <label class="form-label" for="form1Email">Email</label>
-                    </div>
+                        <!-- Email input -->
+                        <div class="col-12 form-outline mb-3">
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'id': 'form1Email'}}) }}
+                            <label class="form-label" for="form1Email">Email</label>
+                        </div>
 
-                    <!-- Phone input -->
-                    <div class="form-outline mb-4">
-                        {{ form_widget(registrationForm.phone_number, {'attr': {'class': 'form-control', 'id': 'form1Phone'
-                        }}) }}
-                        <label class="form-label" for="form1Phone">Téléphone</label>
-                    </div>
+                        <!-- Phone input -->
+                        <div class="col-12 form-outline mb-3">
+                            {{ form_widget(registrationForm.phone_number, {'attr': {'class': 'form-control', 'id': 'form1Phone'
+                            }}) }}
+                            <label class="form-label" for="form1Phone">Téléphone</label>
+                        </div>
 
-                    <!-- Address input -->
-                    <div class="form-outline mb-4">
-                        {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control', 'id': 'form1Address'
-                        }}) }}
-                        <label class="form-label" for="form1Address">Addresse</label>
-                    </div>
+                        <!-- Address input -->
+                        <div class="col-12 form-outline mb-3">
+                            {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control', 'id': 'form1Address'
+                            }}) }}
+                            <label class="form-label" for="form1Address">Addresse</label>
+                        </div>
 
-                    <div class="row mb-4">
                         <!-- Zip input -->
-                        <div class="col">
-                            {{ form_widget(registrationForm.zip, {'attr': {'class': 'form-outline', 'id': 'form1Zip'
+                        <div class="form-outline mb-3 col-6">
+                            {{ form_widget(registrationForm.zip, {'attr': {'class': 'form-control', 'id': 'form1Zip'
                             }}) }}
                             <label class="form-label" for="form1Zip">Code Postal</label>
                         </div>
 
                         <!-- City input -->
-                        <div class="col">
-                            {{ form_widget(registrationForm.city, {'attr': {'class': 'form-outline', 'id': 'form1City'
-                            }}) }}
-                            <label class="form-label" for="form1City">Ville</label>
+                        <div class="form-outline mb-3 col-6">
+                            {{ form_widget(registrationForm.city, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'form1City'
+                                }
+                            }) }}
+                            {{ form_label(registrationForm.city, 'Ville') }}
                         </div>
+
+                    </div>
+                    
+                    <div class="row my-4">
+
+                        {% for field in registrationForm.plainPassword %}
+                            <!-- Password input -->
+                            <div class="col-12 form-outline mb-3">
+                                {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_label(field) }}
+                            </div>
+                        {% endfor %}
+
                     </div>
 
-                    <!-- Password input -->
-                    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-outline', 'id': 'form1Pwd'
-                    }}) }}
-                    {{
-                        form_label(registrationForm.plainPassword, null, {
-                            label: "Mot de passe",
-                            label_attr: { class: "form-label", id: "form1Pwd" }
-                        })
-                    }}
-
-                    <!-- Checkbox -->
-                    <div class="form-control mb-4">
-                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input','id': 'flexCheckDefault'
-                        }}) }}
-                        <a href="#!">conditions d'utilisation</a>
+                    <div class="row my-4">
+                        <!-- Checkbox -->
+                        <div class="col-12 mb-3">
+                            {{ form_row(registrationForm.agreeTerms, {
+                                'label': 'j\'accepte les conditions générales d\'utilisation',
+                                'attr': {
+                                    'class': 'form-check-input',
+                                    'id': 'flexCheckDefault'
+                            }}) }}
+                        </div>
                     </div>
 
                     <!-- Submit button -->

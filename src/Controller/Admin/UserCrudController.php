@@ -21,7 +21,7 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id', "ID:")->hideOnForm()->hideOnIndex(),
+            IdField::new('id', "ID:")->hideOnForm(),
             EmailField::new('email', "Email:"),
             ChoiceField::new('roles', "Rôles:")->setChoices([
                 'Utilisateur' => 'ROLE_USER',
@@ -32,8 +32,8 @@ class UserCrudController extends AbstractCrudController
                 'help' => '8 caractères minimum',
                 'attr' => [
                     'minLength' => 8
-                    ]
-                ]),
+                ]
+            ]),
             TextField::new('firstname', "Prénom:"),
             TextField::new('lastname', "Nom:"),
             TextField::new('address', "Adresse:"),
@@ -41,7 +41,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('city', "Ville:"),
             TelephoneField::new('phone_number', "Numéro de Téléphone:"),
             BooleanField::new('isVerified', "Email Vérifié"),
-            
+
         ];
     }
 }

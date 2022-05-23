@@ -1,3 +1,9 @@
+/* RESET */
+.form-outline {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /************/
 /* Carousel */
 /************/
@@ -31,11 +37,9 @@
     background-position: center center;
 }
 
-/* Height for devices larger than 576px */
-@media (min-width: 992px) {
-    #introCarousel {
-        margin-top: -58.59px;
-    }
+
+#introCarousel {
+    margin-top: -76.6px;
 }
 
 /**************************/
@@ -47,14 +51,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin-top: -76.6px;
 }
 
-/* Height for devices larger than 576px */
-@media (min-width: 992px) {
-    #intro {
-        margin-top: -58.59px;
-    }
+#page-form {
+    margin-top: 76.6px;
 }
 
 /**********/

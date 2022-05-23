@@ -31,7 +31,8 @@ class ProductsCrudController extends AbstractCrudController
             TextField::new('slug'),
             ImageField::new('image', "Image:")
                 ->setBasePath(self::PRODUCT_BASE_PATH)
-                ->setUploadDir(self::PRODUCT_UPLOAD_DIR),
+                ->setUploadDir(self::PRODUCT_UPLOAD_DIR)
+                ->setUploadedFileNamePattern('[randomhash].[extension]'),
             TextareaField::new('description', 'Description:'),
             MoneyField::new('price', "Prix:")->setCurrency('EUR'),
             DateTimeField::new('created_at', "Ajouté le:")->hideOnForm(),

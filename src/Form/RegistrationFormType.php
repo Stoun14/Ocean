@@ -36,7 +36,6 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => " ",
                 'attr' => [
                     'class' => 'form-check',
                 ],
@@ -65,9 +64,9 @@ class RegistrationFormType extends AbstractType
                 ],
                 'first_options' => [
                     'label' => "Mot de Passe:",
-                    // 'attr' => [
-                    //     'class' => 'form-control',
-                    // ]
+                    'attr' => [
+                        'class' => 'form-outline',
+                    ]
                 ],
                 'second_options' => [
                     'label' => "Répétez votre mot de passe:",
