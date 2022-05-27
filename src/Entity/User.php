@@ -53,9 +53,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updated_at;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Orders::class)]
-    private $orders;
-
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Article::class)]
     private $article;
 
@@ -70,14 +67,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->updated_at = new \DateTime();
     }
-    
+
     public function __construct()
     {
         $this->roles = ["ROLE_USER"];
         $this->created_at = new \DateTime();
         $this->updated_at = null;
         $this->orders = new ArrayCollection();
-        $this->article = new ArrayCollection();       
+        $this->article = new ArrayCollection();
         $this->isVerified = false;
         $this->addresses = new ArrayCollection();
     }
@@ -266,36 +263,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Orders>
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Orders $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Orders $order): self
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Article>
      */
     public function getArticle(): Collection
@@ -336,7 +303,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
+
     public function __toString()
     {
         return $this->email;

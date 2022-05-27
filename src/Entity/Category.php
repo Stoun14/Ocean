@@ -2,26 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CategoriesRepository::class)]
-class Categories
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 80)]
     private $name;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Products::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private $products;
 
     public function __construct()
@@ -51,7 +51,7 @@ class Categories
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -59,14 +59,14 @@ class Categories
     }
 
     /**
-     * @return Collection<int, Products>
+     * @return Collection<int, Product>
      */
     public function getProducts(): Collection
     {
         return $this->products;
     }
 
-    public function addProduct(Products $product): self
+    public function addProduct(Product $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
@@ -76,7 +76,7 @@ class Categories
         return $this;
     }
 
-    public function removeProduct(Products $product): self
+    public function removeProduct(Product $product): self
     {
         if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)

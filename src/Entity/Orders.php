@@ -19,15 +19,11 @@ class Orders
     #[ORM\Column(type: 'string', length: 255)]
     private $fullname;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $user;
-
     #[ORM\Column(type: 'boolean')]
     private $is_paid;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $reference;    
+    private $reference;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $carrier_name;
@@ -45,7 +41,7 @@ class Orders
     private $updated_at;
 
     #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrderDetails::class, orphanRemoval: true)]
-    private $orderDetails;    
+    private $orderDetails;
 
     #[ORM\PreUpdate]
     public function setUpdatedAtValue()
@@ -57,7 +53,7 @@ class Orders
     {
         $this->created_at = new \DateTime();
         $this->updated_at = null;
-        $this->orderDetails = new ArrayCollection();        
+        $this->orderDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -97,18 +93,6 @@ class Orders
     public function setUpdatedAt(?\DateTime $updated_at): self
     {
         $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }
@@ -201,8 +185,8 @@ class Orders
         }
 
         return $this;
-    }    
-    
+    }
+
     public function getIsPaid(): ?bool
     {
         return $this->is_paid;
@@ -214,5 +198,4 @@ class Orders
 
         return $this;
     }
-
 }

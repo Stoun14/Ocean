@@ -6,8 +6,8 @@ use App\Entity\User;
 use App\Entity\Orders;
 use App\Entity\Article;
 use App\Entity\Carrier;
-use App\Entity\Categories;
-use App\Entity\Products;
+use App\Entity\Product;
+use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -61,8 +61,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Créer un article', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW)
         ]);
         yield MenuItem::subMenu('Catégories', 'fas fa-list')->setSubItems([
-            MenuItem::linkToCrud('Afficher les catégories', 'fas fa-eye', Categories::class),
-            MenuItem::linkToCrud('Créer une catégorie', 'fas fa-plus', Categories::class)->setAction(Crud::PAGE_NEW)
+            MenuItem::linkToCrud('Afficher les catégories', 'fas fa-eye', Category::class),
+            MenuItem::linkToCrud('Créer une catégorie', 'fas fa-plus', Category::class)->setAction(Crud::PAGE_NEW)
         ]);
         yield MenuItem::subMenu('Transporteurs', 'fas fa-truck')->setSubItems([
             MenuItem::linkToCrud('Afficher les transporteurs', 'fas fa-eye', Carrier::class),
@@ -73,8 +73,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Créer une Commande', 'fas fa-plus', Orders::class)->setAction(Crud::PAGE_NEW)
         ]);
         yield MenuItem::subMenu('Produits', 'fas fa-tags')->setSubItems([
-            MenuItem::linkToCrud('Afficher les produits', 'fas fa-eye', Products::class),
-            MenuItem::linkToCrud('Créer un produit', 'fas fa-plus', Products::class)->setAction(Crud::PAGE_NEW)
+            MenuItem::linkToCrud('Afficher les produits', 'fas fa-eye', Product::class),
+            MenuItem::linkToCrud('Créer un produit', 'fas fa-plus', Product::class)->setAction(Crud::PAGE_NEW)
         ]);
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Afficher les utilisateurs', 'fas fa-eye', User::class),
