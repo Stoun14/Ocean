@@ -1,7 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark mask-custom" style="z-index: 2000;">
-	<div
-		class="container-fluid">
+	<div class="container-fluid">
 		<!-- Navbar brand -->
 		<a class="navbar-brand nav-link" href="{{path('home')}}">
 			<img src="{{ asset('images/logo_rond.png') }}" alt="logo arrondi de l'association" width="50" height="50"/>
@@ -25,24 +24,34 @@
 			</ul>
 			<ul class="navbar-nav flex-row align-items-center justify-content-end">
 				<li class="nav-item">
+					<a class="nav-link mx-2" href="#!">
+						<i class="fa-solid fa-search"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link mx-2" href="{{path('cart')}}">
+						<i class="fa-solid fa-cart-shopping"></i>
+					</a>
+				</li>
+				<li class="nav-item">
 					{% if app.user %}
-						<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('account')}}">
-							<i class="fa-solid fa-user me-1"></i>Profil
+						<a class="nav-link mx-2" href="{{path('account')}}">
+							<i class="fa-solid fa-user"></i>Profil
 						</a>
 					{% else %}
-						<a class="nav-link btn btn-primary mx-2 pt-2" style="background-color: #55acee" href="{{path('register')}}">
-							<i class="fa-solid fa-users me-1"></i>Inscription
+						<a class="nav-link mx-2" href="{{path('register')}}">
+							<i class="fa-solid fa-users"></i>Inscription
 						</a>
 					{% endif %}
 				</li>
 				<li class="nav-item">
 					{% if app.user %}
-						<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('logout')}}">
-							<i class="fa-solid fa-right-to-bracket me-1"></i>Déconnexion
+						<a class="nav-link mx-2" href="{{path('logout')}}">
+							<i class="fa-solid fa-right-to-bracket"></i>Déconnexion
 						</a>
 					{% else %}
-						<a class="nav-link btn btn-primary pt-2" style="background-color: #55acee" href="{{path('login')}}">
-							<i class="fa-solid fa-user me-1"></i>Connexion
+						<a class="nav-link mx-2" href="{{path('login')}}">
+							<i class="fa-solid fa-user"></i>Connexion
 						</a>
 					{% endif %}
 				</li>

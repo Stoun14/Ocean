@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\CartService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -16,19 +17,20 @@ class CartController extends AbstractController
         $this->requestStack = $requestStack;
     }
 
-    #[Route('/cart', name: 'cart')]
-    public function index(): Response
+    #[Route('/cart', name: 'cart_index')]
+    public function index(CartService $cartService): Response
     {
-        $session = $this->requestStack->getSession();
+        // $session = $this->requestStack->getSession();
 
-        // stores an attribute in the session for later reuse
-        $session->set('cart', ['name' => 'session']);
+        // // stores an attribute in the session for later reuse
+        // $session->set('cart', ['name' => 'session']);
 
-        $cart = $session->get('cart');
+        $cart = $cartService->getFullCart();
+        $total = $cartService->getTotal();
 
         return $this->render('cart/index.html.twig', [
-            'controller_name' => 'CartController',
-            'cart' => $cart
+            'cart' => $cart,
+            'total' => $total
         ]);
     }
 }
