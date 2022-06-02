@@ -38,13 +38,13 @@ class Product
     #[ORM\PreUpdate]
     public function setUpdatedAtValue()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function __construct()
     {
-        $this->created_at = new \DateTime();
-        $this->updated_at = null;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = null;
     }
 
     public function getId(): ?int

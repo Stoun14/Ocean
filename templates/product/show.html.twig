@@ -1,103 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Boutique
+{% block title %}
+	Boutique
 {% endblock %}
 
 {% block main %}
-	{# <h1>Produits</h1>
-			
-			
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ product.id }}</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>{{ product.name }}</td>
-			</tr>
-			<tr>
-				<th>Image</th>
-				<td>{{ product.image }}</td>
-			</tr>
-			<tr>
-				<th>Description</th>
-				<td>{{ product.description }}</td>
-			</tr>
-			<tr>
-				<th>Price</th>
-				<td>{{ product.price }}</td>
-			</tr>
-			<tr>
-				<th>Created_at</th>
-				<td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>Updated_at</th>
-				<td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<a href="{{ path('products_index') }}">back to list</a>
-
-	<a href="{{ path('products_edit', {'id': product.id}) }}">edit</a>
-
-	{{ include('products/_delete_form.html.twig') }} #}
-
-	<!-- Product section-->
+	<!-- Product section -->
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
-				<div class="col-md-6">
+				<!-- Product image -->
+				<div class="col-md-6">					
 					<img class="card-img-top mb-5 mb-md-0" src="{{asset('images/products/' ~ product.image)}}" alt="{{ product.name }}"/>
 				</div>
 				<div class="col-md-6">
 					<div class="small mb-1"></div>
+					<!-- Product name -->
 					<h1 class="display-5 fw-bolder">{{ product.name }}</h1>
-					<div
-						class="fs-5 mb-5">
-						{# <span class="text-decoration-line-through">$45.00</span> #}
-						<span>
-							{{ (product.price / 100) |number_format(2, ',', '.') }} €
+					<div class="fs-5 mb-5">
+						<!-- Product price -->						
+						<span>							
+							{{ (product.price / 100) |number_format(2, ',', ' ') }} €
 						</span>
 					</div>
+					<!-- Product description -->
 					<p class="lead">{{ product.description }}</p>
 					<div class="d-flex">
-						<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"/>
-						<button class="btn btn-outline-dark flex-shrink-0" type="button">
-							<i class="bi-cart-fill me-1"></i>
+						<a class="btn btn-outline-dark flex-shrink-0" href="{{ path('cart_add', {'id': product.id}) }}">
+							<i class="fa-solid fa-cart-shopping"></i>							
 							Ajouter au panier
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-<!-- Related items section-->
-<section class="py-5 bg-light">
-	<div class="container px-4 px-lg-5 mt-5">
-		<h2 class="fw-bolder mb-4">Produits de la même catégorie</h2>
-		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Product image-->
-					<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Fancy Product</h5>
-							<!-- Product price-->
-							$40.00 - $80.00
-						</div>
+	<!-- Related items section -->
+	<section class="py-5 bg-light">
+		<div class="container px-4 px-lg-5 mt-5">
+			<h2 class="fw-bolder mb-4">Produits de la même catégorie</h2>
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				{% for item in category %}
+					<div class="col mb-5">										
+						<div class="card h-100">
+							<!-- Related item image -->
+							<img class="card-img-top" src="{{asset('images/products/' ~ item.image)}}" alt="{{ item.name }}" />
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Related item name -->
+									<h5 class="fw-bolder">{{ item.name }}</h5>
+									<!-- Related item price -->
+									{{ (item.price / 100) |number_format(2, ',', ' ') }} €
+								</div>
+							</div>
+							<!-- Related item actions -->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<a class="btn btn-outline-dark mt-auto" href="{{ path('cart_add', {'id': item.id}) }}">
+										Ajouter au panier
+									</a>
+								</div>
+							</div>
+						</div>					
 					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
+		</div>
+	</section>
 {% endblock %}
