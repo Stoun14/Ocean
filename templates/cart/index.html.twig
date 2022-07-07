@@ -3,7 +3,77 @@
 {% block title %}Panier{% endblock %}
 
 {% block main %}
-	<div class="page">
+<main class="cart-container">
+	<div class="card">
+		<div class="row">
+			<div class="col-md-8 cart">
+				<div class="title">
+					<div class="row">
+						<div class="col"><h4><b>Panier</b></h4></div>
+						<div class="col align-self-center text-right text-muted">
+							{% if nbproducts == 1 %}
+								( {{ nbproducts }} produit dans votre panier)
+							{% else %}
+								( {{ nbproducts }} produits dans votre panier)
+							{% endif %}
+						</div>
+					</div>
+				</div>				   
+				<div class="row border-top border-bottom">
+					{% if nbproducts == 0 %}
+						<div>
+							<p class="text-center my-3">Votre panier est vide: <a href="{{ path('product_index') }}">Commencer vos Achats</a></p>
+						</div>
+					{% else %}
+						{% for item in cart %} 
+						<div class="row main align-items-center">
+							<div class="col-2"><img class="img-fluid" src="{{asset('images/products/' ~ item.product.image)}}" alt="{{ item.product.name }}"></div>
+							<div class="col">								
+								<div class="row">{{ item.product.name }}</div>
+							</div>
+							<div class="col">
+								<a href="{{ path('cart_remove', {id: item.product.id}) }}"><i class="fa-solid fa-square-minus text-danger"></i></a>{{ item.quantity }}<a href="{{ path('cart_add', {id: item.product.id}) }}"><i class="fa-solid fa-square-plus text-success"></i></a>
+							</div>
+							<div class="col">{{ (item.product.price * item.quantity / 100)|number_format(2, ',', ' ') }} &euro;<span class="close">&#10005;</span></div>
+						</div>
+						{% endfor %}
+					{% endif %}
+				</div>				
+				<div class="back-to-shop">
+					<div class="row">
+						<a href="javascript:history.back()" class="text-decoration-none col">&leftarrow;<span class="text-muted">Retour</span></a>
+						<a href="{{ path('cart_clear') }}" class="text-decoration-none col ms-auto"><span class="text-muted">Vider le panier</span></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 summary">
+				<div><h5><b>Récapitulatif</b></h5></div>
+				<hr>
+				<div class="row">
+					<div class="col" {# style="padding-left:0;" #}>
+						{% if nbproducts == 1 %}
+							{{ nbproducts }} PRODUIT
+						{% else %}
+							{{ nbproducts }} PRODUITS
+						{% endif %}
+					</div>
+					<div class="col text-right">{{ (total / 100)|number_format(2, ',', ' ') }} &euro;</div>
+				</div>
+				<form>
+					<p>LIVRAISON</p>
+					<select><option class="text-muted">Standard-Delivery-5.00 &euro;</option></select>
+				</form>
+				<div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+					<div class="col">PRIX TOTAL</div>
+					<div class="col text-right">{{ (total / 100)|number_format(2, ',', ' ') }} &euro;</div>
+				</div>
+				<button class="btn btn-dark">VALIDEZ LA COMMANDE</button>
+			</div>
+		</div>
+		
+	</div>
+</main>
+	{# <div class="page">
 	 	<section class="shopping-cart dark">
 	 		<div class="container">
 		        <div class="block-heading">
@@ -41,7 +111,7 @@
 							 						</div>                                                    
                                                     <div class="col-md-4 quantity">
                                                         <label for="quantity">Quantité:</label>
-                                                        <input id="quantity" type="number" value ="{{ item.quantity }}" class="form-control quantity-input">
+                                                        <input id="quantity" type="number" value ="{{ item.quantity }}" min="1" max="99" class="form-control quantity-input">
                                                     </div>                                                    
                                                     <div class="col-md-3 price">
                                                         <span>{{ (item.product.price / 100)|number_format(2, ',', ' ') }} €</span>
@@ -68,5 +138,5 @@
 		 		</div>
 	 		</div>
 		</section>
-	</div>    
+	</div>     #}
 {% endblock %}

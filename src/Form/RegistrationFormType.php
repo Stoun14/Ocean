@@ -28,7 +28,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez inscrire un email!',
                     ]),
                     new Length([
-                        'min' => 2,
+                        'min' => 3,
                         'minMessage' => 'Votre email doit faire au moins {{ limit }} caractères',
                         'max' => 4096,
                     ]),
@@ -46,8 +46,6 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('plainPassword', RepeatedType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
@@ -58,8 +56,7 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 8,
                         'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 255,
+                        'max' => 255
                     ]),
                 ],
                 'first_options' => [
