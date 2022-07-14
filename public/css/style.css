@@ -12,6 +12,24 @@ main {
     margin: 0 !important;
 }
 
+/**********/
+/* Navbar */
+/**********/
+
+.navbar .nav-link {
+    color: #000 !important;
+}
+
+.mask-custom {
+    backdrop-filter: blur(5px);
+    background-color: rgba(176, 212, 235, 0.628);
+}
+
+/*************/
+/* Page Home */
+/*************/
+
+
 /************/
 /* Carousel */
 /************/
@@ -48,6 +66,19 @@ main {
     margin-top: -76.6px;
 }
 
+.carousel-caption {
+    bottom: 35% !important;
+}
+
+.carousel-caption h2 {
+    font-size: 30px;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+}
+
+
 /***************************/
 /*  Page Login & Register  */
 /***************************/
@@ -76,19 +107,6 @@ main {
     background-image: url("../images/fond-de-l-ocean-1200x900.png");
 }
 
-/**********/
-/* Navbar */
-/**********/
-
-.navbar .nav-link {
-    color: #000 !important;
-}
-
-.mask-custom {
-    backdrop-filter: blur(5px);
-    background-color: rgba(176, 212, 235, 0.628);
-}
-
 /********/
 /* Cart */
 /********/
@@ -102,11 +120,11 @@ main {
     font-weight: bold;
 }
 
-.title {
+.cart-container .title {
     margin-bottom: 5vh;
 }
 
-.card {
+.cart-container .card {
     margin: auto;
     max-width: 950px;
     width: 90%;
@@ -159,7 +177,7 @@ main {
     padding: 0;
 }
 
-.row {
+.cart-container .row {
     margin: 0;
 }
 
@@ -173,11 +191,11 @@ main {
     width: 100%;
 }
 
-.col-2, .col{
+.cart-container .col-2, .cart-container .col{
     padding: 0 1vh;
 }
 
-a{
+.cart-container a{
     padding: 0 1vh;
 }
 
@@ -186,7 +204,7 @@ a{
     font-size: 0.7rem;
 }
 
-img{
+.cart-container img{
     width: 3.5rem;
 }
 
@@ -194,16 +212,18 @@ img{
     margin-top: 4.5rem;
 }
 
-h5{
+.cart-container h5{
     margin-top: 4vh;
 }
-hr{
+
+.cart-container hr{
     margin-top: 1.25rem;
 }
-form{
+.cart-container form{
     padding: 2vh 0;
 }
-select{
+
+.cart-container select{
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1.5vh 1vh;
     margin-bottom: 4vh;
@@ -211,7 +231,8 @@ select{
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
-input{
+
+.cart-container input{
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
     margin-bottom: 4vh;
@@ -219,11 +240,13 @@ input{
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
-input:focus::-webkit-input-placeholder
+
+.cart-container input:focus::-webkit-input-placeholder
 {
       color:transparent;
 }
-.btn{
+
+.cart-container .btn{
     background-color: #000;
     border-color: #000;
     color: white;
@@ -233,7 +256,8 @@ input:focus::-webkit-input-placeholder
     padding: 1vh;
     border-radius: 0;
 }
-.btn:focus{
+
+.cart-container .btn:focus{
     box-shadow: none;
     outline: none;
     box-shadow: none;
@@ -242,17 +266,21 @@ input:focus::-webkit-input-placeholder
     -webkit-user-select: none;
     transition: none; 
 }
-.btn:hover{
+
+.cart-container .btn:hover{
     color: white;
 }
-a{
+
+.cart-container a{
     color: black; 
 }
-a:hover{
+
+.cart-container a:hover{
     color: black;
     text-decoration: none;
 }
- #code{
+
+#code{
     background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
     background-repeat: no-repeat;
     background-position-x: 95%;

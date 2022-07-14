@@ -3,9 +3,19 @@
 {% block title %}Article{% endblock %}
 
 {% block main %}
-    <h1>Article</h1>
+    <div class="article">
+        <div class="wrapper">
+            <div class="wrapperText">
+                <h1>{{ article.title }}</h1>                
+            </div>
+        </div>       
+        <div class="articleText">
+            <h4 class="introduction">{{ article.header }}</h4>
+            <p>{{ article.content }}</p>
+        </div>
+    </div>
 
-    <table class="table">
+    {# <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -36,11 +46,7 @@
                 <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
-    </table>
+    </table> #}
 
-    <a href="{{ path('article_index') }}">back to list</a>
-
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+    <a href="{{ path('article_index') }}">Retour aux Actualités</a>
 {% endblock %}
