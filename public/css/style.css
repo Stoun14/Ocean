@@ -264,6 +264,7 @@ main {
     color: white;
     -webkit-box-shadow: none;
     -webkit-user-select: none;
+    user-select: none;
     transition: none; 
 }
 
