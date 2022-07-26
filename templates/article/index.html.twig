@@ -1,23 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index
+{% block title %}
+Article index
 {% endblock %}
 
 {% block main %}
-	<div class="container">
-		<div class="row masonry-grid">
-			{% for article in articles %}
-				<div class="col-md-6 col-lg-4 masonry-column">
-					<div class="card">
-						<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-							<img src="{{asset('images/articles/' ~ article.image)}}" class="img-fluid"/>
-							<a href="{{ path('article_show', {'id': article.id}) }}">
-								<div class="mask" style="background-color: rgba(251, 251, 251, 0.15)">Test</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
+<div class="article-container my-5">
+	<div class="masonry">
+		{% for article in articles %}
+			<div class="item card">			
+				<img src="{{ asset('images/articles/' ~ article.image) }}" class="card-img" alt="{{ article.title }}"/>
+				{# <div class="card-img-overlay d-flex align-items-center">
+					<a href="{{ path('article_show', {'id': article.id}) }}" class="text-white">
+						<h3 class="card-title">{{ article.title }}</h3>
+					</a>
+				</div>			 #}
+			</div>
+		{% endfor %}
 	</div>
+</div>
 {% endblock %}

@@ -1,8 +1,10 @@
 <!-- Carousel Main -->
 <div id="introCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
 	<!-- Carousel Indicator -->
-	<div class="carousel-indicators">		
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#introCarousel" data-bs-slide-to="0" class="active invisible" aria-current="true" aria-label="Slide 1"></button>
 		<a href="#introhome" class="text-decoration-none"><i class="fa-solid fa-circle-arrow-down fa-2xl text-white"></i></a>
+    	<button type="button" data-bs-target="#introCarousel" data-bs-slide-to="1" class="invisible" aria-label="Slide 2"></button>		
 	</div>
 	<!-- !Carousel Indicator -->
 
@@ -11,33 +13,24 @@
 
 		<!-- Single image -->
 		<div class="carousel-item active">
-			<div class="carousel-caption text-white text-start">
+			<div class="carousel-caption d-none d-md-block text-white text-start">
 				<a href="{{ path('article_index')}}" class="text-decoration-none"></a>
-				<h2>Articles</h2>
-				<p>Découvrez les dernières actualités de l'association, <br>
-				ainsi que de dossiers sur la faune et la flore aquatique.</p>
+					<h2>Articles</h2>
+					<p>Découvrez les dernières actualités de l'association, <br>
+					ainsi que de dossiers sur la faune et la flore aquatique.</p>
 				</a>
 			</div>
 		</div>
 
 		<!-- Single image -->
 		<div class="carousel-item">
-			<div class="carousel-caption text-white text-start">
-				<a href="{{ path('product_index') }}" class="text-decoration-none">
-				<h2>Boutique</h2>
-				<p>Financez les actions de l'association par vos achats et vos dons.</p>
+			<div class="carousel-caption d-none d-md-block text-start">
+				<a href="{{ path('product_index') }}" class="text-white text-decoration-none">
+					<h2>Boutique</h2>
+					<p>Financez les actions de l'association par vos achats et vos dons.</p>
 				</a>
 			</div>
-		</div>
-
-		<!-- Single image -->
-		<div class="carousel-item">
-			<div class="carousel-caption text-white text-start">
-				<h2></h2>
-				<p>Découvrez les dernières actualités de l'association, <br>
-				ainsi que de dossiers sur la faune et la flore aquatique.</p>
-			</div>
-		</div>
+		</div>		
 
 	</div>
 	<!-- !Inner Carousel -->
@@ -45,11 +38,11 @@
 	<!-- Carousel Controls -->
 	<button class="carousel-control-prev" type="button" data-bs-target="#introCarousel" data-bs-slide="prev">
 		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
+		<span class="visually-hidden">Previous</span>
 	</button>
 	<button class="carousel-control-next" type="button" data-bs-target="#introCarousel" data-bs-slide="next">
 		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
+		<span class="visually-hidden">Next</span>
 	</button>
 	<!-- !Carousel Controls -->
 </div>

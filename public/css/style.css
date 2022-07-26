@@ -12,6 +12,16 @@ main {
     margin: 0 !important;
 }
 
+body {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 /**********/
 /* Navbar */
 /**********/
@@ -29,15 +39,12 @@ main {
 /* Page Home */
 /*************/
 
-
-/************/
 /* Carousel */
-/************/
 
 #introCarousel,
 .carousel-inner,
 .carousel-item,
-.carousel-item.active {
+.carousel-item .active {
     height: 100vh;
 }
 
@@ -49,13 +56,6 @@ main {
 }
 
 .carousel-item:nth-child(2) {
-    background-image: url("../images/baleines_noires.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-.carousel-item:nth-child(3) {
     background-image: url("../images/recif_coralien.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -77,6 +77,8 @@ main {
 .carousel-caption p {
     font-size: 20px;
 }
+
+/* !Carousel */
 
 
 /***************************/
@@ -105,6 +107,49 @@ main {
 
 .bg_request {
     background-image: url("../images/fond-de-l-ocean-1200x900.png");
+}
+
+/*******************/
+/*  Page Articles  */
+/*******************/
+
+.article-container {
+    box-sizing: inherit;
+}
+
+/* The Masonry Container */
+.masonry {
+    margin: 1.5em auto;
+    max-width: 768px;
+    column-gap: 1.5em;
+}
+
+/* The Masonry Brick */
+.item {
+background: #fff;
+padding: 1em;
+margin: 0 0 1.5em;
+}
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+.masonry {
+    column-count: 4;
+}
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+.masonry {
+    column-count: 3;
+}
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+.masonry {
+    column-count: 2;
+}
 }
 
 /********/

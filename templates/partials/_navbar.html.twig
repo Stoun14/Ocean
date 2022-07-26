@@ -27,9 +27,12 @@
 			</ul>
 			<ul class="navbar-nav flex-row align-items-center justify-content-end">
 				<li class="nav-item">
-					<a class="nav-link mx-2" href="#!">
+					<a class="nav-link mx-2" href="#collapseLink" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseLink">
 						<i class="fa-solid fa-search"></i>
 					</a>
+				</li>
+				<li class="nav-item collapse" id="collapseLink">
+					<input type="text">
 				</li>
 				<li class="nav-item">
 					<a class="nav-link mx-2" href="{{path('cart_index')}}">

@@ -1,11 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}erreur
+{% block title %}
+erreur
+{% endblock %}
+
+{% block header %}
+	
 {% endblock %}
 
 {% block main %}
 
-	<h1>Erreur 404</h1>
-	<a href="{{ path('home') }}">retourner à l'accueil</a>
+<style>
+	body {
+		background-image: url("../images/erreur404.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		min-height: 100vh;
+	}
+</style>
 
+<div class="container-404 text-center">
+	<div class="row">
+		<h1>Erreur 404</h1>
+	</div>
+	<div class="row">
+		<p class="fs-4">La page demandée est introuvable!</p>
+	</div>
+	<a href="{{ path('home') }}" class="justify-content-center">retourner à l'accueil</a>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+	
 {% endblock %}
